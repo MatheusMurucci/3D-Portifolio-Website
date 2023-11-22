@@ -27,10 +27,10 @@ const torus = new THREE.Mesh( geometry, material );
 
 scene.add(torus)
 
-const pointLight = new THREE.PointLight(0xffffff)
-pointLight.position.set(5, 5, 5)
+const pointLight = new THREE.PointLight(0xffffff, 1200)
+pointLight.position.set(10, 10, 10)
 
-const ambientLight = new THREE.AmbientLight(0xffffff);
+const ambientLight = new THREE.AmbientLight(0xffffff, 2);
 scene.add(pointLight, ambientLight)
 
 const lightHelper = new THREE.PointLightHelper(pointLight)
@@ -66,6 +66,9 @@ const moon = new THREE.Mesh(
   })
 );
 
+moon.position.z = 30;
+moon.position.setX(-10);
+
 scene.add(moon);
 
 
@@ -75,6 +78,7 @@ function animate() {
   torus.rotation.x += 0.01;
   torus.rotation.y += 0.005;
   torus.rotation.z += 0.01;
+  moon.rotation.y += 0.001;
 
   controls.update();
 
